@@ -202,6 +202,8 @@ public class SlackNotificationPlugin implements NotificationPlugin {
 
     private HttpURLConnection openConnection(URL requestUrl) {
         try {
+            System.setProperty("http.proxyHost", "http://public0-proxy1-0-prd.data.sfdc.net");
+            System.setProperty("http.proxyPort", "8080");
             return (HttpURLConnection) requestUrl.openConnection();
         } catch (IOException ioEx) {
             throw new SlackNotificationPluginException("Error opening connection to Slack URL: [" + ioEx.getMessage() + "].", ioEx);
